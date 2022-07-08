@@ -10,20 +10,20 @@ Create the same application using multiple platforms and coding languages with v
 
 ## Tools
 
-### 1. Design
+### 1. [Design](/design/)
 
 Create a simple design and workflow using the following tools:
 
-- Figma
+- [Figma](/design/figma/)
 - Sketch
 - Adobe XD
 
-### 2. IOS
+### 2. [IOS](/ios/)
 
 Languages:
 
-- Objective-C
-- Swift
+- [Objective-C](/ios/objective-c/)
+- [Swift](/ios/swift/)
 
 State Management:
 
@@ -33,12 +33,12 @@ State Management:
 - VIPER
 - MVI
 
-### 3. Android
+### 3. [Android](/android/)
 
 Languages:
 
-- Java
-- Kotlin
+- [Java](/android/java/)
+- [Kotlin](/android/kotlin/)
 
 State Management:
 
@@ -48,3 +48,15 @@ State Management:
 - VIPER
 - MVI
 
+### 4. [Flutter](/flutter/)
+
+Language:
+
+- Dart
+
+State Management:
+
+- Bloc
+- Provider
+- Riverpods
+- GetX
