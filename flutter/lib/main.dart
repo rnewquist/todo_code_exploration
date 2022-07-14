@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo/provider/main.dart';
 
 void main() {
   runApp(
@@ -31,10 +32,26 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  late StateManagement dropDownValue;
+  Widget get child {
+    switch (_dropDownValue) {
+      case StateManagement.providers:
+        return const ProviderMain();
+      case StateManagement.riverpods:
+        return Container();
+      case StateManagement.bloc:
+        return Container();
+      case StateManagement.getX:
+        return Container();
+      default:
+        return Container();
+    }
+  }
+
+  late StateManagement _dropDownValue;
+
   @override
   void initState() {
-    dropDownValue = StateManagement.providers;
+    _dropDownValue = StateManagement.providers;
     super.initState();
   }
 
@@ -44,25 +61,28 @@ class _MainAppState extends State<MainApp> {
       appBar: AppBar(
         title: DropdownButton<String>(
           underline: const SizedBox(),
-          value: dropDownValue.name,
-          icon: const Icon(
-            Icons.keyboard_arrow_down_rounded,
-            color: Colors.white,
-          ),
+          icon: const SizedBox(),
+          value: _dropDownValue.name,
           selectedItemBuilder: (BuildContext context) {
-            //<-- SEE HERE
             return StateManagement.values
-              .map((e) => e.name)
-              .toList()
+                .map((e) => e.name)
+                .toList()
                 .map((String value) {
-              return Center(
-                child: Text(
-                  dropDownValue.name,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32,
-                  ),
+              return SizedBox(
+                width: 180,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      _dropDownValue.name,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 32,
+                      ),
+                    ),
+                    const Icon(Icons.keyboard_arrow_down_rounded)
+                  ],
                 ),
               );
             }).toList();
@@ -85,12 +105,13 @@ class _MainAppState extends State<MainApp> {
           }).toList(),
           onChanged: (value) {
             setState(() {
-              dropDownValue = StateManagement.values
+              _dropDownValue = StateManagement.values
                   .firstWhere((element) => element.name == value);
             });
           },
         ),
       ),
+      body: child,
     );
   }
 }
