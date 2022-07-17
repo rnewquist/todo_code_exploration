@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
         if (!provider.isInitializing) {
           return Scaffold(
             floatingActionButton: FloatingActionButton(
+              child: const Icon(Icons.add, color: Colors.white),
               onPressed: () {},
             ),
           );

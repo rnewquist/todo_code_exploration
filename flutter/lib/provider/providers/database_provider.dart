@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:realm/realm.dart';
-import 'package:todo/database/dao/todoDao.dart';
-import 'package:todo/database/dao/todoDaoImpl.dart';
+import 'package:todo/database/realm/dao/todoDao.dart';
+import 'package:todo/database/realm/dao/todoDaoImpl.dart';
 
 class DatabaseProvider extends ChangeNotifier {
   Future<void> init() async {

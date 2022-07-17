@@ -6,8 +6,8 @@ part of 'todo.dart';
 // RealmObjectGenerator
 // **************************************************************************
 
-class Todo extends _Todo with RealmEntity, RealmObject {
-  Todo(
+class TodoModel extends _TodoModel with RealmEntity, RealmObject {
+  TodoModel(
     String id,
     DateTime lastUpdated,
     bool isChecked,
@@ -21,7 +21,7 @@ class Todo extends _Todo with RealmEntity, RealmObject {
     RealmObject.set(this, 'position', position);
   }
 
-  Todo._();
+  TodoModel._();
 
   @override
   String get id => RealmObject.get<String>(this, 'id') as String;
@@ -51,14 +51,14 @@ class Todo extends _Todo with RealmEntity, RealmObject {
   set position(int value) => RealmObject.set(this, 'position', value);
 
   @override
-  Stream<RealmObjectChanges<Todo>> get changes =>
-      RealmObject.getChanges<Todo>(this);
+  Stream<RealmObjectChanges<TodoModel>> get changes =>
+      RealmObject.getChanges<TodoModel>(this);
 
   static SchemaObject get schema => _schema ??= _initSchema();
   static SchemaObject? _schema;
   static SchemaObject _initSchema() {
-    RealmObject.registerFactory(Todo._);
-    return const SchemaObject(Todo, 'Todo', [
+    RealmObject.registerFactory(TodoModel._);
+    return const SchemaObject(TodoModel, 'TodoModel', [
       SchemaProperty('id', RealmPropertyType.string, primaryKey: true),
       SchemaProperty('lastUpdated', RealmPropertyType.timestamp),
       SchemaProperty('isChecked', RealmPropertyType.bool),

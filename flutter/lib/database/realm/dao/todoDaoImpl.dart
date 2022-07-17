@@ -1,6 +1,6 @@
 import 'package:realm/realm.dart';
-import 'package:todo/database/dao/todoDao.dart';
-import 'package:todo/database/model/todo.dart';
+import 'package:todo/database/realm/dao/todoDao.dart';
+import 'package:todo/database/realm/model/todo.dart';
 
 class TodoDaoImpl implements TodoDao {
   TodoDaoImpl(this.realm);
@@ -21,12 +21,13 @@ class TodoDaoImpl implements TodoDao {
 
   @override
   Todo read(String id) {
-    return realm.query<Todo>('id == "$id"').first;
+    return realm.query<Todo>('id == "$id"').first..instance = realm;
   }
 
   @override
   RealmResults<Todo> readAll() {
-    return realm.query<Todo>('SORT(position ASC)');
+    return realm.query<Todo>('SORT(position ASC)')
+      ..forEach((element) => element.instance = realm);
   }
 
   @override

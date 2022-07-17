@@ -1,5 +1,5 @@
 import 'package:realm/realm.dart';
-import 'package:todo/database/model/todo.dart';
+import 'package:todo/database/realm/model/todo.dart';
 
 abstract class TodoDao {
   RealmResults<Todo> readAll();
